@@ -8,11 +8,11 @@ RUN apt-get upgrade -y
 RUN apt-get install apache2 -y
 RUN DEBIAN_FRONTEND=noninteractive
 RUN apt-get install php libapache2-mod-php php-mcrypt php-mysql -y
+RUN rm /var/www/html/index.html
 
-COPY webpage/index.php /var/www/html/index.php
+COPY webpage/index.html /var/www/html/index.html
 
 RUN a2enmod rewrite
-RUN rm /var/www/html/index.html
 RUN chown -R www-data:www-data /var/www/html
 
 EXPOSE 80
